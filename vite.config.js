@@ -3,6 +3,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: '/product_fr_React/',
+  build: {
+    outDir: 'docs'
+  },
   plugins: [react()],
   server: {
     port: 3000,
