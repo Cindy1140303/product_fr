@@ -37,7 +37,7 @@ const BANNERS = [
 
 const PRODUCTS = [
   { id: 1, name: '4K HDMI 延伸器', model: 'oo-123-HDMI', tag: 'new', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=200&h=150&fit=crop' },
-  { id: 2, name: 'Cat6 網路交換器', model: 'SW-800-NET', tag: 'hot', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?w=200&h=150&fit=crop' },
+  { id: 2, name: 'Cat6 網路交換器', model: 'SW-800-NET', tag: 'hot', image: `${import.meta.env.BASE_URL}products/cat6-switch.jpg` },
   { id: 3, name: '專業機架式 PDU', model: 'oo-10U-AC', tag: 'none', image: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?w=200&h=150&fit=crop' },
   { id: 4, name: 'USB-C 多功能轉接頭', model: 'oo-TYPEC-01', tag: 'new', image: 'https://images.unsplash.com/photo-1614624532983-4ce03382d63d?w=200&h=150&fit=crop' },
 ];
