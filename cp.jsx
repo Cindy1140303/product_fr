@@ -49,10 +49,10 @@ const NEWS = [
 ];
 
 const BRANDS = [
-  { name: 'O光軟體', img: '/brands/1.png' },
-  { name: 'HK OO', img: '/brands/2.png' },
-  { name: 'CLIMB', img: '/brands/3.png' },
-  { name: 'O霖實驗', img: '/brands/4.png' },
+  { name: 'O光軟體', img: `${import.meta.env.BASE_URL}brands/1.png` },
+  { name: 'HK OO', img: `${import.meta.env.BASE_URL}brands/2.png` },
+  { name: 'CLIMB', img: `${import.meta.env.BASE_URL}brands/3.png` },
+  { name: 'O霖實驗', img: `${import.meta.env.BASE_URL}brands/4.png` },
 ];
 
 const App = () => {
@@ -253,11 +253,29 @@ const App = () => {
                 <Tag className="text-blue-900" size={20} /> 代理品牌專區
               </h3>
               <div className="flex flex-wrap gap-4">
-                {BRANDS.map(brand => (
-                  <div key={brand.name} className="border p-2 grayscale hover:grayscale-0 transition cursor-pointer bg-white">
-                    <img src={brand.img} alt={brand.name} className="w-[120px] h-[120px] object-contain" />
-                  </div>
-                ))}
+                {BRANDS.map(brand => {
+                  const src = brand.img;
+                  console.log('Render brand image src:', src, 'full URL will be:', src);
+                  return (
+                    <div key={brand.name} className="border p-2 grayscale hover:grayscale-0 transition cursor-pointer bg-white">
+                      <img 
+                        src={src} 
+                        alt={brand.name} 
+                        className="w-[120px] h-[120px] object-contain" 
+                        onError={(e) => {
+                          console.error('❌ Image load failed:', src);
+                          console.error('Current src attr:', e.currentTarget.getAttribute('src'));
+                          console.error('Full URL attempted:', e.currentTarget.currentSrc || 'unknown');
+                          e.currentTarget.style.backgroundColor = '#ffcccc';
+                          e.currentTarget.style.display = 'flex';
+                          e.currentTarget.style.alignItems = 'center';
+                          e.currentTarget.style.justifyContent = 'center';
+                        }}
+                        onLoad={() => console.log('✓ Image loaded successfully:', src)}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
